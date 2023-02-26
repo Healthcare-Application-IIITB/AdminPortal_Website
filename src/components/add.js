@@ -18,6 +18,11 @@ function Add({ setSpecialisations, setAdd }) {
   const [clinic_address, setClinic_address] = useState("");
 
   const urlBase = "https://8eec-119-161-98-68.in.ngrok.io/api/v1";
+  const config = {
+    headers: {
+      "ngrok-skip-browser-warning": "true",
+    },
+  };
 
   const handleSubmit = (e) => {
     const data = {
@@ -58,7 +63,7 @@ function Add({ setSpecialisations, setAdd }) {
     } else {
       console.log("new doctor to be added:", data);
       axios
-        .post(`${urlBase}/doctor/addDoctor`, data)
+        .post(`${urlBase}/doctor/addDoctor`, config, data)
         .then((json) => {
           alert("Success");
           clear();

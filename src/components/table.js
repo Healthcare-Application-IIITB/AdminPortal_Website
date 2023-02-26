@@ -14,13 +14,6 @@ function TableView() {
 
   const [shouldEdit, setEdit] = useState("");
   const [add, setAdd] = useState(false);
-
-  const [editName, setEditName] = useState("");
-  const [editCode, setEditCode] = useState("");
-  const [editDescription, setEditDescription] = useState("");
-  const [editYear, setEditYear] = useState("");
-  const [editCredits, setEditCredits] = useState("");
-
   const [specialisations, setSpecialisations] = useState([]);
 
   const [available_timings, setAvailible_timings] = useState("");
@@ -66,17 +59,44 @@ function TableView() {
 
   const handleUpdate = () => {
     const data = {
-      code: editCode,
-      name: editName,
-      description: editDescription,
-      year: editYear,
-      creditsRequired: editCredits,
+      available_timings,
+      city,
+      clinic_address,
+      description,
+      dob,
+      fname,
+      id,
+      lname,
+      online_status: false,
+      photo_url,
+      qualification,
+      rating,
+      sex,
+      specilization,
+      state,
     };
-    if (!(editCode && editName && editDescription && editYear && editCredits)) {
+    if (
+      !(
+        available_timings &&
+        city &&
+        clinic_address &&
+        description &&
+        dob &&
+        fname &&
+        id &&
+        lname &&
+        photo_url &&
+        qualification &&
+        rating &&
+        sex &&
+        specilization &&
+        state
+      )
+    ) {
       alert("All Fields are Required");
     } else {
       axios
-        .patch(`${urlBase}/specialisation/update`, data)
+        .post(`${urlBase}/doctor/updateDoctor`, config, data)
         .then((json) => {
           setEdit(-1);
         })
@@ -198,7 +218,7 @@ function TableView() {
                     </td>
                     <td>
                       <input
-                        type="text"
+                        type="number"
                         className="form-control"
                         value={rating}
                         placeholder="Rating"

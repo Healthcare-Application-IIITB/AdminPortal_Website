@@ -1,0 +1,70 @@
+.App {
+  background-color: white;
+}
+
+.Auth-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.logout {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 10px;
+  color: red;
+}
+
+table {
+  word-wrap: break-word;
+  margin: 20px;
+}
+
+.Table-form-container {
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  border-radius: 8px;
+  background-color: white;
+  margin: 10px;
+  /* margin: 10% 10% 10% 10%; */
+}
+
+.Auth-form {
+  width: 420px;
+  box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+  padding-top: 30px;
+  padding-bottom: 80px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.Auth-form-content {
+  padding-left: 12%;
+  padding-right: 12%;
+}
+
+label {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgb(34, 34, 34);
+}
+
+.btn-circle.btn-sm {
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+  text-align: center;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}

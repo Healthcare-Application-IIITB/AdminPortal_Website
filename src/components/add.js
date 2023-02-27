@@ -13,11 +13,12 @@ function Add({ setSpecialisations, setAdd }) {
   const [qualification, setQualification] = useState("");
   const [rating, setRating] = useState("");
   const [sex, setSex] = useState("");
-  const [specilization, setSpecilization] = useState("");
+  const [specialization, setSpecialization] = useState("");
   const [state, setState] = useState("");
   const [clinic_address, setClinic_address] = useState("");
 
-  const urlBase = "https://8eec-119-161-98-68.in.ngrok.io/api/v1";
+  const urlBase = "https://2017-2406-7400-92-d03c-f79e-b04c-be75-8c4e.in.ngrok.io/api/v1";
+
   const config = {
     headers: {
       "ngrok-skip-browser-warning": "true",
@@ -31,7 +32,7 @@ function Add({ setSpecialisations, setAdd }) {
       sex,
       photo_url,
       qualification,
-      specilization,
+      specialization,
       clinic_address,
       city,
       state,
@@ -49,7 +50,7 @@ function Add({ setSpecialisations, setAdd }) {
         sex &&
         photo_url &&
         qualification &&
-        specilization &&
+        specialization &&
         clinic_address &&
         city &&
         state &&
@@ -63,7 +64,7 @@ function Add({ setSpecialisations, setAdd }) {
     } else {
       console.log("new doctor to be added:", data);
       axios
-        .post(`${urlBase}/doctor/addDoctor`, config, data)
+        .post(`${urlBase}/doctor/addDoctor`,data, config)
         .then((json) => {
           alert("Success");
           clear();
@@ -88,7 +89,7 @@ function Add({ setSpecialisations, setAdd }) {
     setQualification("");
     setRating("");
     setSex("");
-    setSpecilization("");
+    setSpecialization("");
     setState("");
     setClinic_address("");
   };
@@ -156,9 +157,9 @@ function Add({ setSpecialisations, setAdd }) {
           <input
             type="text"
             required
-            value={specilization}
-            placeholder="Specilization"
-            onChange={(e) => setSpecilization(e.target.value)}
+            value={specialization}
+            placeholder="Specialization"
+            onChange={(e) => setSpecialization(e.target.value)}
           />
         </td>
         <td>

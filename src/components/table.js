@@ -4,7 +4,7 @@ import getSpecialisations from "../services/service.js";
 import Add from "./add";
 
 function TableView() {
-  const urlBase = "https://8eec-119-161-98-68.in.ngrok.io/api/v1";
+  const urlBase = "https://2017-2406-7400-92-d03c-f79e-b04c-be75-8c4e.in.ngrok.io/api/v1";
 
   const config = {
     headers: {
@@ -15,7 +15,6 @@ function TableView() {
   const [shouldEdit, setEdit] = useState("");
   const [add, setAdd] = useState(false);
   const [specialisations, setSpecialisations] = useState([]);
-
   const [available_timings, setAvailible_timings] = useState("");
   const [city, setCity] = useState("");
   const [description, setDescription] = useState("");
@@ -26,7 +25,7 @@ function TableView() {
   const [qualification, setQualification] = useState("");
   const [rating, setRating] = useState("");
   const [sex, setSex] = useState("");
-  const [specilization, setSpecilization] = useState("");
+  const [specialization, setSpecialization] = useState("");
   const [state, setState] = useState("");
   const [clinic_address, setClinic_address] = useState("");
   const [id, setId] = useState("");
@@ -34,7 +33,7 @@ function TableView() {
   const handleEdit = (specialisation) => {
     setEdit(specialisation.id);
     setId(specialisation.id);
-    setAvailible_timings(specialisation.available_timimgs);
+    setAvailible_timings(specialisation.available_timings);
     setCity(specialisation.city);
     setDescription(specialisation.description);
     setDob(specialisation.dob);
@@ -44,14 +43,14 @@ function TableView() {
     setQualification(specialisation.qualification);
     setRating(specialisation.rating);
     setSex(specialisation.sex);
-    setSpecilization(specialisation.specialization);
+    setSpecialization(specialisation.specialization);
     setState(specialisation.state);
     setClinic_address(specialisation.clinic_address);
   };
 
   const handleDelete = (id) => {
     axios
-      .delete(`${urlBase}/doctor/deleteDoctor/${id}`, config)
+      .post(`${urlBase}/doctor/deleteDoctor/${id}`,config)
       .then((json) => {
         getSpecialisations(setSpecialisations);
       });
@@ -72,31 +71,12 @@ function TableView() {
       qualification,
       rating,
       sex,
-      specilization,
+      specialization,
       state,
     };
-    if (
-      !(
-        available_timings &&
-        city &&
-        clinic_address &&
-        description &&
-        dob &&
-        fname &&
-        id &&
-        lname &&
-        photo_url &&
-        qualification &&
-        rating &&
-        sex &&
-        specilization &&
-        state
-      )
-    ) {
-      alert("All Fields are Required");
-    } else {
-      axios
-        .post(`${urlBase}/doctor/updateDoctor`, config, data)
+
+    axios
+        .post(`${urlBase}/doctor/updateDoctor`, data, config)
         .then((json) => {
           setEdit(-1);
         })
@@ -107,7 +87,7 @@ function TableView() {
           alert("Error While Updating");
           console.log(error);
         });
-    }
+
   };
 
   useEffect(() => {
@@ -202,9 +182,9 @@ function TableView() {
                       <input
                         type="text"
                         className="form-control"
-                        value={specilization}
+                        value={specialization}
                         placeholder="Specialisation"
-                        onChange={(e) => setSpecilization(e.target.value)}
+                        onChange={(e) => setSpecialization(e.target.value)}
                       />
                     </td>
                     <td>
@@ -333,7 +313,7 @@ function TableView() {
                     <td>{specialisation.specialization} </td>
                     <td>{specialisation.description}</td>
                     <td>{specialisation.rating}</td>
-                    <td>{specialisation.available_timimgs}</td>
+                    <td>{specialisation.available_timings}</td>
                     <td>{specialisation.city}</td>
                     <td>{specialisation.clinic_address}</td>
                     <td>{specialisation.dob}</td>

@@ -74,6 +74,25 @@ function TableView() {
       specialization,
       state,
     };
+    if (
+      !(
+        fname &&
+        lname &&
+        sex &&
+        photo_url &&
+        qualification &&
+        specialization &&
+        clinic_address &&
+        city &&
+        state &&
+        description &&
+        rating &&
+        available_timings &&
+        dob
+      )
+    ) {
+      alert("All Fields are Required");
+    } else {
 
     axios
         .post(`${urlBase}/doctor/updateDoctor`, data, config)
@@ -87,7 +106,7 @@ function TableView() {
           alert("Error While Updating");
           console.log(error);
         });
-
+      }
   };
 
   useEffect(() => {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import getSpecialisations from "../services/service.js";
 
+
 function Add({ setSpecialisations, setAdd }) {
   const [available_timings, setAvailible_timings] = useState("");
   const [city, setCity] = useState("");
@@ -17,7 +18,7 @@ function Add({ setSpecialisations, setAdd }) {
   const [state, setState] = useState("");
   const [clinic_address, setClinic_address] = useState("");
 
-  const urlBase = "https://2017-2406-7400-92-d03c-f79e-b04c-be75-8c4e.in.ngrok.io/api/v1";
+  const urlBase = "https://7d19-119-161-98-68.in.ngrok.io/api/v1";
 
   const config = {
     headers: {
@@ -95,7 +96,12 @@ function Add({ setSpecialisations, setAdd }) {
   };
 
   return (
-    <div>
+
+
+ 
+
+    <div id="Add_Doc">
+      <tbody>
       <tr>
         <td>
           <input
@@ -116,13 +122,17 @@ function Add({ setSpecialisations, setAdd }) {
           />
         </td>
         <td>
-          <input
-            type="text"
-            required
-            value={sex}
-            placeholder="Sex"
-            onChange={(e) => setSex(e.target.value)}
-          />
+        <label htmlFor="sex">&nbsp;Sex:&nbsp;&nbsp;</label>
+        <select name="sex" id="sex"
+        required
+        value={sex}
+        placeholder="Sex"
+        onChange={(e) => {setSex(e.target.value); console.log(e.target.value)}}>
+            <option selected disabled hidden value=''>Select option</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+            <option value="O">Others</option>
+          </select>
         </td>
         <td>
           <input
@@ -154,13 +164,23 @@ function Add({ setSpecialisations, setAdd }) {
           />
         </td>
         <td>
-          <input
-            type="text"
+          <label htmlFor="Specialization">&nbsp;Specialization:&nbsp;&nbsp;</label>
+          <select name="specialization" id="specialization"
             required
             value={specialization}
             placeholder="Specialization"
-            onChange={(e) => setSpecialization(e.target.value)}
-          />
+            onChange={(e) => {setSpecialization(e.target.value); console.log(specialization)}}>
+            <option selected disabled hidden value=''>Select option</option>
+            <option value="General">General</option>
+            <option value="Pediatrician">Pediatrician</option>
+            <option value="Dermatologists">Dermatologists</option>
+            <option value="Psychiatrists">Psychiatrists</option>
+            <option value="Urologists">Urologists</option>
+            <option value="ChildSpecialist">ChildSpecialist</option>
+            <option value="Cardiologist">Cardiologist</option>
+            <option value="Neurologist">Neurologist</option>
+            <option value="Ayurveda">Ayurveda</option>
+          </select>
         </td>
         <td>
           <input
@@ -201,23 +221,29 @@ function Add({ setSpecialisations, setAdd }) {
           />
         </td>
         <td>
-          <input
-            type="number"
+          <label for="Rating">&nbsp;Rating:&nbsp;&nbsp;</label>
+        <select name="Rating" id="Rating"
             required
             value={rating}
             placeholder="Rating"
-            onChange={(e) => setRating(e.target.value)}
-          />
+            onChange={(e) => {console.log(rating);setRating(e.target.value)}}>
+            <option selected disabled hidden value=''>Select option</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
         </td>
       </tr>
       <tr>
         <td>
           <input
-            type="text"
+            type="date"
             required
             value={dob}
             placeholder="DOB"
-            onChange={(e) => setDob(e.target.value)}
+            onChange={(e) => {console.log(dob); setDob(e.target.value)}}
           />
         </td>
         <td>
@@ -240,6 +266,7 @@ function Add({ setSpecialisations, setAdd }) {
           </button>
         </td>
       </tr>
+      </tbody>
     </div>
   );
 }

@@ -4,7 +4,7 @@ import getSpecialisations from "../services/service.js";
 import Add from "./add";
 
 function TableView() {
-  const urlBase = "https://2017-2406-7400-92-d03c-f79e-b04c-be75-8c4e.in.ngrok.io/api/v1";
+  const urlBase = "http://localhost:8080/api/v1";
 
   const config = {
     headers: {
@@ -115,7 +115,7 @@ function TableView() {
 
   return (
     <div>
-      <h1>Doctors List</h1>
+      <h1 style={{color:'rgb(38, 201, 225)', alignContent:'center',paddingLeft:'800px'}}>Doctors List</h1>
       <button
         type="button"
         onClick={() => {
@@ -131,9 +131,9 @@ function TableView() {
         ) : null}
       </div>
       <div class="Table-form-container table-responsive fixed-table-body">
-        <table class="table table-hover">
-          <thead>
-            <tr class="table-primary">
+        <table class="table table-striped table-light table-hover">
+          <thead style={{backgroundColor:'brown'}}>
+            <tr class="table-primary" style={{color:'red'}}>
               <th scope="col ">Doctor ID</th>
 
               <th scope="col">First Name</th>
@@ -343,7 +343,7 @@ function TableView() {
                     <td>{specialisation.online_status ? "🟢" : "🔴"}</td>
                     <td>
                       <button
-                        class="btn btn-sm btn-circle btn-warning"
+                        class="btn btn-rounded btn-outline-info"prog
                         onClick={() => handleEdit(specialisation)}
                       >
                         📝 Edit
@@ -353,7 +353,7 @@ function TableView() {
                       <button
                         type="button"
                         onClick={() => handleDelete(specialisation.id)}
-                        class="btn btn-sm btn-circle btn-danger "
+                        class="btn btn-rounded btn-outline-danger "
                       >
                         🗑️ Remove
                       </button>

@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import Add from "./add";
 
-function Nav({setUserId}) {
+function Nav({setUserId,setSpecialisations}) {
 
     const [add, setAdd] = useState(false);
-    const [specialisations, setSpecialisations] = useState([]);
+    //const [specialisations, setSpecialisations] = useState([]);
 
 return(
-<div class="logout">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark" style={{width:"1515px",marginLeft:"50px",borderRadius:"15px",height:"60px"}}>
+<div class="logout" style={{paddingRight:"50px",paddingTop:"50px"}}>
+    <nav class="navbar navbar-expand-lg navbar-light" style={{width:"1825px",marginLeft:"50px",borderRadius:"15px",height:"60px",backgroundColor:"#17a2b8"}}>
   <div class="container-fluid">
     <button
       class="navbar-toggler"
@@ -25,13 +25,13 @@ return(
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a id="navL" style={{paddingLeft:"30px",fontWeight:"bold",fontSize:"18px"}}>Home</a>
+          <a id="navL" style={{paddingLeft:"30px",fontWeight:"bold",fontSize:"16px"}}>HOME</a>
         </li>
         <li class="nav-item">
-          <a id="navL" data-toggle="modal" data-target="#exampleModalLive" style={{paddingLeft:"100px",fontWeight:"bold",fontSize:"18px"}}
+          <a id="navL" data-toggle="modal" data-target="#exampleModalLive" style={{paddingLeft:"100px",fontWeight:"bold",fontSize:"16px"}}
           onClick={() => {
             setAdd((value) => !value);}}
-        >Add doctor</a>
+        >ADD DOCTOR</a>
         <div className="addDoctor">
             {console.log(add)}
         {add > 0 ? (
@@ -41,14 +41,15 @@ return(
         </li>
        
       </ul>
+      <h1 style={{color:'rgb(245, 245, 245)', alignContent:'center',paddingLeft:'8px', paddingRight:'750px', fontWeight:'bold', fontSize:'30px'}}>Admin Portal</h1>
     </div>
 
     <div class="d-flex align-items-center">
     <li class="nav-item">
-          <a id="navR" style={{fontWeight:"bold",fontSize:"18px"}} onClick={() => {
+          <a id="navR" style={{fontWeight:"bold",fontSize:"16px",paddingRight:"20px"}} onClick={() => {
             localStorage.setItem("Id", -1);
             setUserId(-1);
-          }}> Logout</a>
+          }}> LOGOUT</a>
         </li>
     </div>
   </div>

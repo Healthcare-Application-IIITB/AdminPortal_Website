@@ -18,7 +18,7 @@ function Add({ setSpecialisations, setAdd }) {
   const [state, setState] = useState("");
   const [clinic_address, setClinic_address] = useState("");
 
-  const urlBase = "https://7d19-119-161-98-68.in.ngrok.io/api/v1";
+  const urlBase = "https://7187-119-161-98-68.in.ngrok.io/api/v1";
 
   const config = {
     headers: {
@@ -49,7 +49,6 @@ function Add({ setSpecialisations, setAdd }) {
         fname &&
         lname &&
         sex &&
-        photo_url &&
         qualification &&
         specialization &&
         clinic_address &&
@@ -102,7 +101,7 @@ function Add({ setSpecialisations, setAdd }) {
      <div className="modal-dialog modal-lg modal-dialog-centered"role="document">
        <div className="modal-content" style={{backgroundColor:"rgb(250, 250, 250)"}}>
        <div className="modal-header">
-           <h5 className="modal-title" style={{color:"#2FEBD2", paddingLeft:'310px', fontWeight:'bold'}} id="exampleModalCenterTitle">ADD DOCTOR</h5>
+           <h5 className="modal-title" style={{color:"#17a2b8", paddingLeft:'310px', fontWeight:'bold'}} id="exampleModalCenterTitle">ADD DOCTOR</h5>
            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => {
                setAdd((value) => !value);
              }}>
@@ -163,9 +162,9 @@ function Add({ setSpecialisations, setAdd }) {
          <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">Upload Photo</h5>
            <input className="add-form-input"
-             type="text"
+             type="file"
              required
-             value={photo_url}
+             value={""}
              placeholder="Photo URL"
              onChange={(e) => setPhoto_url(e.target.value)}
            />
@@ -278,7 +277,7 @@ function Add({ setSpecialisations, setAdd }) {
            <input className="add-form-input"
              type="text"
              required
-             value='🟢 Online'
+             value='🔴 Offline'
              placeholder="Online"
              disabled
            />

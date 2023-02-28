@@ -118,6 +118,7 @@ function TableView() {
       <h1 style={{color:'rgb(38, 201, 225)', alignContent:'center',paddingLeft:'800px'}}>Doctors List</h1>
       <button
         type="button"
+        data-toggle="modal" data-target="#exampleModalLive"
         onClick={() => {
           setAdd((value) => !value);
         }}

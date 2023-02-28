@@ -13,7 +13,7 @@ code {
 }
 
 .add-form{
-  color: #2FEBD2;
+  color: #17a2b8;
   padding-top: 12px;
   padding-left: 5px;
 }
@@ -29,10 +29,16 @@ code {
   
 }
 
+#navR{
+  color:rgb(245, 245, 245);
+}
+#navL{
+  color: rgb(245,245,245);
+}
 #navR:hover {
-  color: red;
+  color: #2FEBD2;
 }
 
 #navL:hover {
-  color :#e0f3e1
+  color : #2FEBD2;
 }

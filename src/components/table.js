@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import getSpecialisations from "../services/service.js";
-import Add from "./add";
 
-function TableView() {
-  const urlBase = "http://localhost:8080/api/v1";
+function TableView({setSpecialisations,specialisations}) {
+  const urlBase = "https://7187-119-161-98-68.in.ngrok.io/api/v1";
 
   const config = {
     headers: {
@@ -14,7 +13,7 @@ function TableView() {
 
   const [shouldEdit, setEdit] = useState("");
   // const [add, setAdd] = useState(false);
-  const [specialisations, setSpecialisations] = useState([]);
+  //const [specialisations, setSpecialisations] = useState([]);
   const [available_timings, setAvailible_timings] = useState("");
   const [city, setCity] = useState("");
   const [description, setDescription] = useState("");
@@ -115,7 +114,7 @@ function TableView() {
 
   return (
     <div>
-      <h1 style={{color:'rgb(38, 201, 225)', alignContent:'center',paddingLeft:'800px'}}>Doctors List</h1>
+    <p style={{paddingTop:'80px'}}></p>
       {/* <button
         type="button"
         data-toggle="modal" data-target="#exampleModalLive"
@@ -131,48 +130,37 @@ function TableView() {
           <Add setSpecialisations={setSpecialisations} setAdd={setAdd} />
         ) : null}
       </div> */}
-      <div class="Table-form-container table-responsive fixed-table-body">
-        <table class="table table-striped table-light table-hover">
-          <thead style={{backgroundColor:'brown'}}>
-            <tr class="table-primary" style={{color:'red'}}>
-              <th scope="col ">Doctor ID</th>
-
-              <th scope="col">First Name</th>
-
-              <th scope="col">Second Name</th>
-
-              <th scope="col">Specialisation</th>
-
-              <th scope="col">Description</th>
-
-              <th scope="col">Rating</th>
-
-              <th scope="col">Availible Timings</th>
-
-              <th scope="col">City</th>
-
-              <th scope="col">Clinic Address</th>
-
-              <th scope="col">Data of Birth</th>
-
-              <th scope="col">Photo</th>
-
-              <th scope="col">Qualification</th>
-
-              <th scope="col">Sex</th>
-
-              <th scope="col">State</th>
-
-              <th scope="col">Online Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            {specialisations &&
+      <div className='m-4 p-2 rounded regular-shadow' id="domains" style={{display:"inline-block",width:"1825px"}}>
+      <table className="table table-striped table-light"  style={{borderRadius:"15px",overflowY:"scroll"}}>
+      <thead>
+      <tr style={{color:"#17a2b8"}}>
+      <th scope="col" style={{paddingLeft:"10px"}}>Doctor Id</th>
+        <th scope="col">First Name</th>
+        <th scope="col">Last Name</th>
+        <th scope="col">Specialisation</th>
+        <th scope="col">Description</th>
+        <th scope="col">Rating</th>
+        <th scope="col">Available Timings</th>
+        <th scope="col">City</th>
+        <th scope="col">Clinic Address</th>
+        <th scope="col">Data of Birth</th>
+        <th scope="col">Photo</th>
+        <th scope="col">Qualification</th>
+        <th scope="col">Sex</th>
+        <th scope="col">State</th>
+        <th scope="col">Online Status</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+        <tbody>
+        { 
+          specialisations &&
               specialisations.map((specialisation, index) => {
                 return specialisation.id === shouldEdit ? (
                   <tr key={index}>
                     <td>
-                      <input
+                      <input style={{width:'62px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={specialisation.id}
@@ -181,7 +169,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'82px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={fname}
@@ -190,7 +178,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'82px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={lname}
@@ -199,7 +187,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'82px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={specialization}
@@ -208,7 +196,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'82px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={description}
@@ -217,7 +205,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'62px',fontSize:'16px'}}
                         type="number"
                         className="form-control"
                         value={rating}
@@ -226,7 +214,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'82px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={available_timings}
@@ -235,7 +223,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'82px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={city}
@@ -244,7 +232,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'82px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={clinic_address}
@@ -253,7 +241,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'62px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={dob}
@@ -262,7 +250,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'62px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={photo_url}
@@ -271,7 +259,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'62px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={qualification}
@@ -280,7 +268,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'62px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={sex}
@@ -289,7 +277,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'62px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={state}
@@ -298,7 +286,7 @@ function TableView() {
                       />
                     </td>
                     <td>
-                      <input
+                      <input style={{width:'62px',fontSize:'16px'}}
                         type="text"
                         className="form-control"
                         value={specialisation.online_status ? "🟢" : "🔴"}
@@ -308,15 +296,15 @@ function TableView() {
                     </td>
                     <td>
                       <button
-                        class="btn btn-sm btn-circle btn-success "
+                        class="btn btn-rounded btn-outline-success"
                         onClick={() => handleUpdate()}
                       >
                         ✔️Submit
                       </button>
-                      <span> </span>
-
+                      </td>
+                      <td>
                       <button
-                        class="btn btn-sm btn-circle btn-light"
+                        class="btn btn-rounded btn-outline-dark"
                         onClick={() => {
                           setEdit("");
                         }}
@@ -344,7 +332,7 @@ function TableView() {
                     <td>{specialisation.online_status ? "🟢" : "🔴"}</td>
                     <td>
                       <button
-                        class="btn btn-rounded btn-outline-info"prog
+                        class="btn btn-rounded btn-outline-info"
                         onClick={() => handleEdit(specialisation)}
                       >
                         📝 Edit
@@ -362,10 +350,11 @@ function TableView() {
                   </tr>
                 );
               })}
-          </tbody>
-        </table>
-      </div>
+        </tbody>
+      </table>
     </div>
+           </div>
+
   );
 }
 export default TableView;

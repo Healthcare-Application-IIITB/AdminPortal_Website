@@ -10,6 +10,7 @@ import TableView from "./components/table";
 
 function App() {
   const [userID, setUserId] = useState(localStorage.getItem("Id"));
+  const [specialisations, setSpecialisations] = useState([]);
 
   return userID <= 0 ? (
     <Login user={setUserId} />
@@ -27,9 +28,9 @@ function App() {
           Logout
         </button>
       </div> */}
-      <Nav setUserId={setUserId} />
+      <Nav setUserId={setUserId} setSpecialisations={setSpecialisations} />
 
-      <TableView />
+      <TableView setSpecialisations={setSpecialisations} specialisations={specialisations}/>
     </Fragment>
   );
 }

@@ -10,7 +10,7 @@ const config = {
 function Login({ user }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const urlBase = "https://2017-2406-7400-92-d03c-f79e-b04c-be75-8c4e.in.ngrok.io/api/v1";
+  const urlBase = "http://localhost:8080/api/v1";
 
   const startLogin = (credentials) => {
     console.log(credentials);
@@ -41,9 +41,9 @@ function Login({ user }) {
   return (
     <div className="Auth-form-container">
       <form className="Auth-form">
-        <div className="Auth-form-content">
-          <h3>Admin Log In</h3>
-          <div className="form-group mt-3">
+        <div className="Auth-form-content" style={{color: 'darkblue', paddingLeft:'50px'}}>
+          <h3 style={{paddingLeft:'65px', color:'rgb(38, 201, 225)', fontWeight:'bold'}}>ADMIN LOGIN</h3>
+          <div className="form-group mt-3" style={{paddingTop:'30px'}}>
             <h5>User Name</h5>
             <input
               type="text"
@@ -65,12 +65,12 @@ function Login({ user }) {
             />
           </div>
           <div className="d-grid mt-5">
-            <button
-              type="submit"
-              className="btn btn-primary"
+            <button style={{backgroundColor:'rgb(38, 201, 225)', fontWeight:'bold'}}
+              type="Submit"
+              className="btn btn-primary btn-block"
               onClick={(e) => handleLogin(e)}
             >
-              Submit
+              SUBMIT
             </button>
           </div>
         </div>

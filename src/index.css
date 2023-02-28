@@ -28,3 +28,11 @@ code {
   background-color: rgb(245,245,245);
   
 }
+
+#navR:hover {
+  color: red;
+}
+
+#navL:hover {
+  color :#e0f3e1
+}

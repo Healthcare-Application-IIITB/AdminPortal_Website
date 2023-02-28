@@ -98,7 +98,7 @@ function Add({ setSpecialisations, setAdd }) {
   return (
     <div>
     <div className="bd-example">
-     <div className="modal" id="exampleModalLive"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div className="modal" id="exampleModalLive"  tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
      <div className="modal-dialog modal-lg modal-dialog-centered"role="document">
        <div className="modal-content" style={{backgroundColor:"rgb(250, 250, 250)"}}>
        <div className="modal-header">

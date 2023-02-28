@@ -96,15 +96,13 @@ function Add({ setSpecialisations, setAdd }) {
   };
 
   return (
-
-
     <div>
     <div className="bd-example">
-     <div className="modal" id="exampleModalLive" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-     <div className="modal-dialog modal-dialog-centered" role="document">
+     <div className="modal" id="exampleModalLive"  tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+     <div className="modal-dialog modal-lg modal-dialog-centered"role="document">
        <div className="modal-content" style={{backgroundColor:"rgb(250, 250, 250)"}}>
        <div className="modal-header">
-           <h5 className="modal-title" style={{color:"#2FEBD2", paddingLeft:'170px', fontWeight:'bold'}} id="exampleModalCenterTitle">ADD DOCTOR</h5>
+           <h5 className="modal-title" style={{color:"#2FEBD2", paddingLeft:'310px', fontWeight:'bold'}} id="exampleModalCenterTitle">ADD DOCTOR</h5>
            <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => {
                setAdd((value) => !value);
              }}>
@@ -114,7 +112,7 @@ function Add({ setSpecialisations, setAdd }) {
        <div className="modal-body">
        <tbody>
        <tr>
-         <td>
+         <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">First Name</h5>
            <input className="add-form-input"
              type="text"
@@ -124,11 +122,9 @@ function Add({ setSpecialisations, setAdd }) {
              onChange={(e) => setFname(e.target.value)}
            />
          </td>
-         </tr>
-         <tr>
-         <td>
+         <td style={{paddingLeft:'100px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">Last Name</h5>
-           <input className="add-form-input"
+           <input className="add-form-input" 
              type="text"
              required
              value={lname}
@@ -138,7 +134,7 @@ function Add({ setSpecialisations, setAdd }) {
            </td>
          </tr>
          <tr>
-         <td>
+         <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">Sex</h5>
          {/* <label htmlFor="sex">&nbsp;Sex:&nbsp;&nbsp;</label> */}
          <select name="sex" id="sex" className="add-form-input"
@@ -152,9 +148,7 @@ function Add({ setSpecialisations, setAdd }) {
              <option value="O">Others</option>
            </select>
          </td>
-         </tr>
-         <tr>
-         <td>
+         <td style={{paddingLeft:'100px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">Available Timings</h5>
            <input className="add-form-input"
              type="text"
@@ -166,7 +160,7 @@ function Add({ setSpecialisations, setAdd }) {
          </td>
          </tr>
        <tr>
-         <td>
+         <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">Upload Photo</h5>
            <input className="add-form-input"
              type="text"
@@ -176,9 +170,7 @@ function Add({ setSpecialisations, setAdd }) {
              onChange={(e) => setPhoto_url(e.target.value)}
            />
          </td>
-         </tr>
-         <tr>
-         <td>
+         <td style={{paddingLeft:'100px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">Qualification</h5>
            <input className="add-form-input"
              type="text"
@@ -190,7 +182,7 @@ function Add({ setSpecialisations, setAdd }) {
          </td>
          </tr>
          <tr>
-         <td>
+         <td style={{paddingLeft:'30px'}}>
            {/* <label htmlFor="Specialization">&nbsp;Specialization:&nbsp;&nbsp;</label> */}
            <h5 className="modal-title add-form" id="exampleModalCenterTitle">Specialization</h5>
            <select name="specialization" id="specialization" className="add-form-input"
@@ -210,9 +202,7 @@ function Add({ setSpecialisations, setAdd }) {
              <option value="Ayurveda">Ayurveda</option>
            </select>
          </td>
-         </tr>
-         <tr>
-         <td>
+         <td style={{paddingLeft:'100px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">Address</h5>
            <input className="add-form-input"
              type="text"
@@ -224,7 +214,7 @@ function Add({ setSpecialisations, setAdd }) {
          </td>
        </tr>
        <tr>
-         <td>
+         <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">City</h5>
            <input className="add-form-input"
              type="text"
@@ -234,9 +224,7 @@ function Add({ setSpecialisations, setAdd }) {
             onChange={(e) => setCity(e.target.value)}
            />
          </td>
-         </tr>
-         <tr>
-         <td>
+         <td style={{paddingLeft:'100px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">State</h5>
            <input className="add-form-input"
              type="text"
@@ -248,7 +236,7 @@ function Add({ setSpecialisations, setAdd }) {
          </td>
          </tr>
          <tr>
-         <td>
+         <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">Description</h5>
            <input className="add-form-input"
              type="text"
@@ -258,10 +246,7 @@ function Add({ setSpecialisations, setAdd }) {
              onChange={(e) => setDescription(e.target.value)}
            />
          </td>
-         </tr>
-         <tr>
-         <td>
-           {/* <label for="Rating">&nbsp;Rating:&nbsp;&nbsp;</label> */}
+         <td style={{paddingLeft:'100px'}}>
            <h5 className="modal-title add-form" id="exampleModalCenterTitle">Rating</h5>
          <select name="Rating" id="Rating" className="add-form-input"
              required
@@ -278,7 +263,7 @@ function Add({ setSpecialisations, setAdd }) {
          </td>
        </tr>
        <tr>
-         <td>
+         <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">DOB</h5>
            <input className="add-form-input"
              type="date"
@@ -286,6 +271,16 @@ function Add({ setSpecialisations, setAdd }) {
              value={dob}
              placeholder="DOB"
              onChange={(e) => {console.log(dob); setDob(e.target.value)}}
+           />
+         </td>
+         <td style={{paddingLeft:'100px'}}>
+         <h5 className="modal-title add-form" id="exampleModalCenterTitle">Online Status</h5>
+           <input className="add-form-input"
+             type="text"
+             required
+             value='🟢 Online'
+             placeholder="Online"
+             disabled
            />
          </td>
          </tr>

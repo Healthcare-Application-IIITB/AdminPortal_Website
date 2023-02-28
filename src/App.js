@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 import { Fragment, useState } from "react";
 
+import Nav from "./components/nav";
+
 import Login from "./components/login";
 
 import TableView from "./components/table";
@@ -13,7 +15,7 @@ function App() {
     <Login user={setUserId} />
   ) : (
     <Fragment>
-      <div class="logout">
+      {/* <div class="logout">
         <button
           type="button"
           onClick={() => {
@@ -24,7 +26,8 @@ function App() {
         >
           Logout
         </button>
-      </div>
+      </div> */}
+      <Nav setUserId={setUserId} />
 
       <TableView />
     </Fragment>

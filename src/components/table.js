@@ -13,7 +13,7 @@ function TableView() {
   };
 
   const [shouldEdit, setEdit] = useState("");
-  const [add, setAdd] = useState(false);
+  // const [add, setAdd] = useState(false);
   const [specialisations, setSpecialisations] = useState([]);
   const [available_timings, setAvailible_timings] = useState("");
   const [city, setCity] = useState("");
@@ -116,7 +116,7 @@ function TableView() {
   return (
     <div>
       <h1 style={{color:'rgb(38, 201, 225)', alignContent:'center',paddingLeft:'800px'}}>Doctors List</h1>
-      <button
+      {/* <button
         type="button"
         data-toggle="modal" data-target="#exampleModalLive"
         onClick={() => {
@@ -130,7 +130,7 @@ function TableView() {
         {add > 0 ? (
           <Add setSpecialisations={setSpecialisations} setAdd={setAdd} />
         ) : null}
-      </div>
+      </div> */}
       <div class="Table-form-container table-responsive fixed-table-body">
         <table class="table table-striped table-light table-hover">
           <thead style={{backgroundColor:'brown'}}>

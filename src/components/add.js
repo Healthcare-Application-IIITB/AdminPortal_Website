@@ -18,7 +18,7 @@ function Add({ setSpecialisations, setAdd }) {
   const [state, setState] = useState("");
   const [clinic_address, setClinic_address] = useState("");
 
-  const urlBase = "https://7187-119-161-98-68.in.ngrok.io/api/v1";
+  const urlBase = "https://f738-103-156-19-229.in.ngrok.io/api/v1";
 
   const config = {
     headers: {
@@ -66,9 +66,10 @@ function Add({ setSpecialisations, setAdd }) {
       axios
         .post(`${urlBase}/doctor/addDoctor`,data, config)
         .then((json) => {
-          alert("Success");
+          //alert("Success");
           clear();
           getSpecialisations(setSpecialisations);
+
         })
         .catch((error) => {
           alert("Error While Adding");
@@ -278,7 +279,7 @@ function Add({ setSpecialisations, setAdd }) {
              type="text"
              required
              value='🔴 Offline'
-             placeholder="Online"
+             placeholder="Offline"
              disabled
            />
          </td>
@@ -310,7 +311,7 @@ function Add({ setSpecialisations, setAdd }) {
            <button type="button" className="btn btn-outline-secondary"  style={{fontWeight:'bold', borderRadius:'7px'}} data-dismiss="modal" onClick={() => {
                setAdd((value) => !value);
              }}>CLOSE</button>
-           <button type="button" className="btn btn-outline-primary" style={{fontWeight:'bold', borderRadius:'7px'}} onClick={(e) => handleSubmit(e)} >SUBMIT</button>
+           <button type="button" className="btn btn-outline-primary" data-dismiss="modal" style={{fontWeight:'bold', borderRadius:'7px'}} onClick={(e) => handleSubmit(e)} >SUBMIT</button>
        </div>
        </div>
    </div>

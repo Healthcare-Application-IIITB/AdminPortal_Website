@@ -41,7 +41,7 @@ return(
         </li>
        
       </ul>
-      <h1 style={{color:'rgb(245, 245, 245)', alignContent:'center',paddingLeft:'8px', paddingRight:'750px', fontWeight:'bold', fontSize:'30px'}}>Admin Portal</h1>
+      <h1 style={{color:'rgb(245, 245, 245)', alignContent:'center',paddingLeft:'50px', paddingRight:'650px', fontWeight:'bold', fontSize:'30px'}}>Administrator Portal</h1>
     </div>
 
     <div class="d-flex align-items-center">

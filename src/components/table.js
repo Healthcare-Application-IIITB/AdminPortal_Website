@@ -14,8 +14,6 @@ function TableView({setSpecialisations,specialisations}) {
 
   const [isOpen, setIsOpen] = useState(false);
   const [shouldEdit, setEdit] = useState("");
-  // const [add, setAdd] = useState(false);
-  //const [specialisations, setSpecialisations] = useState([]);
   const [available_timings, setAvailible_timings] = useState("");
   const [city, setCity] = useState("");
   const [description, setDescription] = useState("");
@@ -31,7 +29,7 @@ function TableView({setSpecialisations,specialisations}) {
   const [clinic_address, setClinic_address] = useState("");
   const [id, setId] = useState("");
 
-  const handleEdit = (specialisation) => {
+  const handleEdit = (specialisation) => {     
     setEdit(specialisation.id);
     setId(specialisation.id);
     setAvailible_timings(specialisation.available_timings);
@@ -116,22 +114,8 @@ function TableView({setSpecialisations,specialisations}) {
 
   return (
     <div>
+             
     <p style={{paddingTop:'80px'}}></p>
-      {/* <button
-        type="button"
-        data-toggle="modal" data-target="#exampleModalLive"
-        onClick={() => {
-          setAdd((value) => !value);
-        }}
-        class="btn btn-sm btn-circle btn-light"
-      >
-        Add doctor➕
-      </button>
-      <div className="addDoctor">
-        {add > 0 ? (
-          <Add setSpecialisations={setSpecialisations} setAdd={setAdd} />
-        ) : null}
-      </div> */}
       <div className='m-4 p-2 rounded regular-shadow' id="domains" style={{display:"inline-block",width:"1825px"}}>
       <table className="table table-striped table-light"  style={{borderRadius:"15px",overflowY:"scroll"}}>
       <thead>
@@ -153,18 +137,15 @@ function TableView({setSpecialisations,specialisations}) {
         {/* <th scope="col">Online Status</th> */}
         <th></th>
         <th></th>
+        <th></th>
       </tr>
     </thead>
         <tbody>
         { 
           specialisations &&
               specialisations.map((specialisation, index) => {
-                return specialisation.id === shouldEdit ? (
-                  <Modify specialisation={specialisation} setSpecialisations={setSpecialisations} setIsOpen={setIsOpen}></Modify>
-                ) : (
-                  <tr key={index}>
-                    {/* <td>{specialisation.id}</td> */}
-                    <td>{specialisation.fname}</td>
+                 return (<tr key={index}>
+                   <td>{specialisation.fname}</td>
                     <td>{specialisation.lname}</td>
                     <td>{specialisation.specialization} </td>
                     <td>{specialisation.description}</td>
@@ -196,8 +177,8 @@ function TableView({setSpecialisations,specialisations}) {
                         🗑️ Remove
                       </button>
                     </td>
-                  </tr>
-                );
+                    <td>{isOpen && <Modify specialisation={specialisation} setSpecialisations={setSpecialisations} setIsOpen={setIsOpen}></Modify>}  </td>
+                  </tr>)
               })}
         </tbody>
       </table>

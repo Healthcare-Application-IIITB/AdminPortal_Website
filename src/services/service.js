@@ -1,5 +1,5 @@
 import axios from "axios";
-const urlBase = "https://7187-119-161-98-68.in.ngrok.io/api/v1";
+const urlBase = "https://f738-103-156-19-229.in.ngrok.io/api/v1";
 
 const config = {
   headers:{

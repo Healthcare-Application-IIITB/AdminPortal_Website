@@ -1,49 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import getSpecialisations from "../services/service.js";
 
 
-function Add({ setSpecialisations, setAdd }) {
-  const [available_timings, setAvailible_timings] = useState("");
-  const [city, setCity] = useState("");
-  const [description, setDescription] = useState("");
-  const [dob, setDob] = useState("");
-  const [fname, setFname] = useState("");
-  const [lname, setLname] = useState("");
-  const [photo_url, setPhoto_url] = useState("");
-  const [qualification, setQualification] = useState("");
-  const [rating, setRating] = useState("");
-  const [sex, setSex] = useState("");
-  const [specialization, setSpecialization] = useState("");
-  const [state, setState] = useState("");
-  const [clinic_address, setClinic_address] = useState("");
-
-  const urlBase = "https://f738-103-156-19-229.in.ngrok.io/api/v1";
+const Modify = ({specialisation,setSpecialisations,setIsOpen})=>{
+    const urlBase = "https://f738-103-156-19-229.in.ngrok.io/api/v1";
 
   const config = {
     headers: {
       "ngrok-skip-browser-warning": "true",
     },
   };
+  const [shouldEdit, setEdit] = useState(specialisation.id);
+  const [available_timings, setAvailible_timings] = useState(specialisation.available_timings);
+  const [city, setCity] = useState(specialisation.city);
+  const [description, setDescription] = useState(specialisation.description);
+  const [dob, setDob] = useState(specialisation.dob);
+  const [fname, setFname] = useState(specialisation.fname);
+  const [lname, setLname] = useState(specialisation.lname);
+  const [photo_url, setPhoto_url] = useState(specialisation.photo_url);
+  const [qualification, setQualification] = useState(specialisation.qualification);
+  const [rating, setRating] = useState(specialisation.rating);
+  const [sex, setSex] = useState(specialisation.sex);
+  const [specialization, setSpecialization] = useState(specialisation.specialization);
+  const [state, setState] = useState(specialisation.state);
+  const [clinic_address, setClinic_address] = useState(specialisation.clinic_address);
+  const [id, setId] = useState(specialisation.id);
 
-  const handleSubmit = (e) => {
+  const handleUpdate = () => {
     const data = {
+      available_timings,
+      city,
+      clinic_address,
+      description,
+      dob,
       fname,
+      id,
       lname,
-      sex,
+      online_status: false,
       photo_url,
       qualification,
-      specialization,
-      clinic_address,
-      city,
-      state,
-      description,
       rating,
-      available_timings,
-      online_status: false,
-      dob,
+      sex,
+      specialization,
+      state,
     };
-
     if (
       !(
         fname &&
@@ -62,59 +63,44 @@ function Add({ setSpecialisations, setAdd }) {
     ) {
       alert("All Fields are Required");
     } else {
-      console.log("new doctor to be added:", data);
-      document.getElementById("add-form-submit").setAttribute("data-dismiss","modal");
-      axios
-        .post(`${urlBase}/doctor/addDoctor`,data, config)
+
+    axios
+        .post(`${urlBase}/doctor/updateDoctor`, data, config)
         .then((json) => {
-          //alert("Success");
-          clear();
-          getSpecialisations(setSpecialisations);
+          setEdit(-1);
         })
+        .then(() => {
+          getSpecialisations(setSpecialisations);
+                  })
         .catch((error) => {
-          alert("Error While Adding");
-          clear();
+          alert("Error While Updating");
           console.log(error);
         });
-    }
+      }
   };
 
-  const clear = () => {
-    setAvailible_timings("");
-    setCity("");
-    setDescription("");
-    setDob("");
-    setFname("");
-    setLname("");
-    setPhoto_url("");
-    setQualification("");
-    setRating("");
-    setSex("");
-    setSpecialization("");
-    setState("");
-    setClinic_address("");
-  };
+  useEffect(() => {
+    getSpecialisations(setSpecialisations);
+  }, []);
 
-  return (
+return(
     <div>
     <div className="bd-example">
      <div className="modal" id="exampleModalLive"  tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-     <div className="modal-dialog modal-lg modal-dialog-centered"role="document">
+     <div className="modal-dialog modal-lg modal-dialog-centered" role="document">
        <div className="modal-content" style={{backgroundColor:"rgb(250, 250, 250)"}}>
        <div className="modal-header">
-           <h5 className="modal-title" style={{color:"#17a2b8", paddingLeft:'310px', fontWeight:'bold'}} id="exampleModalCenterTitle">ADD DOCTOR</h5>
-           <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={() => {
-               setAdd((value) => !value);
-             }}>
+           <h5 className="modal-title" style={{color:"#17a2b8", paddingLeft:'300px', fontWeight:'bold'}} id="exampleModalCenterTitle">UPDATE DOCTOR</h5>
+           <button type="button" className="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
            </button>
        </div>
-       <div className="modal-body">
+       <div className="modal-body" style={{backgroundColor:"rgb(250, 250, 250)"}}>
        <tbody>
-       <tr>
+       <tr style={{backgroundColor:"rgb(250, 250, 250)"}}>
          <td style={{paddingLeft:'30px'}}>
-         <h5 className="modal-title add-form" id="exampleModalCenterTitle">First Name</h5>
-           <input className="add-form-input"
+         <h5 className="modal-title mod-form" id="exampleModalCenterTitle">First Name</h5>
+           <input className="mod-form-input"
              type="text"
              required
              value={fname}
@@ -123,8 +109,8 @@ function Add({ setSpecialisations, setAdd }) {
            />
          </td>
          <td style={{paddingLeft:'100px'}}>
-         <h5 className="modal-title add-form" id="exampleModalCenterTitle">Last Name</h5>
-           <input className="add-form-input" 
+         <h5 className="modal-title mod-form" id="exampleModalCenterTitle">Last Name</h5>
+           <input className="mod-form-input" 
              type="text"
              required
              value={lname}
@@ -133,10 +119,10 @@ function Add({ setSpecialisations, setAdd }) {
            />
            </td>
          </tr>
-         <tr>
+         <tr style={{backgroundColor:"rgb(250, 250, 250)"}}>
          <td style={{paddingLeft:'30px'}}>
-         <h5 className="modal-title add-form" id="exampleModalCenterTitle">Sex</h5>
-         <select name="sex" id="sex" className="add-form-input"
+         <h5 className="modal-title mod-form" id="exampleModalCenterTitle">Sex</h5>
+         <select name="sex" id="sex" className="mod-form-input"
          required
          value={sex}
          placeholder="Sex"
@@ -148,8 +134,8 @@ function Add({ setSpecialisations, setAdd }) {
            </select>
          </td>
          <td style={{paddingLeft:'100px'}}>
-         <h5 className="modal-title add-form" id="exampleModalCenterTitle">Available Timings</h5>
-           <input className="add-form-input"
+         <h5 className="modal-title mod-form" id="exampleModalCenterTitle">Available Timings</h5>
+           <input className="mod-form-input"
              type="text"
              required
              value={available_timings}
@@ -158,12 +144,11 @@ function Add({ setSpecialisations, setAdd }) {
            />
          </td>
          </tr>
-       <tr>
+       <tr style={{backgroundColor:"rgb(250, 250, 250)"}}>
          <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">Upload Photo</h5>
            <input className="add-form-input"
              type="file"
-             required
              value={""}
              placeholder="Photo URL"
              onChange={(e) => setPhoto_url(e.target.value)}
@@ -180,8 +165,9 @@ function Add({ setSpecialisations, setAdd }) {
            />
          </td>
          </tr>
-         <tr>
+         <tr style={{backgroundColor:"rgb(250, 250, 250)"}}>
          <td style={{paddingLeft:'30px'}}>
+           {/* <label htmlFor="Specialization">&nbsp;Specialization:&nbsp;&nbsp;</label> */}
            <h5 className="modal-title add-form" id="exampleModalCenterTitle">Specialization</h5>
            <select name="specialization" id="specialization" className="add-form-input"
              required
@@ -211,7 +197,7 @@ function Add({ setSpecialisations, setAdd }) {
            />
          </td>
        </tr>
-       <tr>
+       <tr style={{backgroundColor:"rgb(250, 250, 250)"}}>
          <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">City</h5>
            <input className="add-form-input"
@@ -233,7 +219,7 @@ function Add({ setSpecialisations, setAdd }) {
            />
          </td>
          </tr>
-         <tr>
+         <tr style={{backgroundColor:"rgb(250, 250, 250)"}}>
          <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">Description</h5>
            <input className="add-form-input"
@@ -260,7 +246,7 @@ function Add({ setSpecialisations, setAdd }) {
            </select>
          </td>
        </tr>
-       <tr>
+       <tr style={{backgroundColor:"rgb(250, 250, 250)"}}>
          <td style={{paddingLeft:'30px'}}>
          <h5 className="modal-title add-form" id="exampleModalCenterTitle">DOB</h5>
            <input className="add-form-input"
@@ -287,17 +273,17 @@ function Add({ setSpecialisations, setAdd }) {
        </tbody>
        </div>
        <div className="modal-footer">
-           <button type="button" className="btn btn-outline-secondary"  style={{fontWeight:'bold', borderRadius:'7px'}} data-dismiss="modal" onClick={() => {
-               setAdd((value) => !value);
-             }}>CLOSE</button>
-           <button type="button" id="add-form-submit" className="btn btn-outline-primary" style={{fontWeight:'bold', borderRadius:'7px'}} onClick={(e) => handleSubmit(e)} >SUBMIT</button>
+           <button type="button" className="btn btn-outline-secondary"  style={{fontWeight:'bold', borderRadius:'7px'}} data-dismiss="modal"
+             >CLOSE</button>
+           <button type="button" className="btn btn-outline-primary" data-dismiss="modal"  style={{fontWeight:'bold', borderRadius:'7px'}} onClick={(e) => handleUpdate(e)}>SUBMIT</button>
        </div>
        </div>
    </div>
    </div>
   </div>
 </div>
-  );
+)
 }
 
-export default Add;
+export default Modify
+

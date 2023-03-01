@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import getSpecialisations from "../services/service.js";
+import Modify from "./modify";
 
 function TableView({setSpecialisations,specialisations}) {
-  const urlBase = "https://7187-119-161-98-68.in.ngrok.io/api/v1";
+  const urlBase = "https://f738-103-156-19-229.in.ngrok.io/api/v1";
 
   const config = {
     headers: {
@@ -11,9 +12,8 @@ function TableView({setSpecialisations,specialisations}) {
     },
   };
 
+  const [isOpen, setIsOpen] = useState(false);
   const [shouldEdit, setEdit] = useState("");
-  // const [add, setAdd] = useState(false);
-  //const [specialisations, setSpecialisations] = useState([]);
   const [available_timings, setAvailible_timings] = useState("");
   const [city, setCity] = useState("");
   const [description, setDescription] = useState("");
@@ -29,7 +29,7 @@ function TableView({setSpecialisations,specialisations}) {
   const [clinic_address, setClinic_address] = useState("");
   const [id, setId] = useState("");
 
-  const handleEdit = (specialisation) => {
+  const handleEdit = (specialisation) => {     
     setEdit(specialisation.id);
     setId(specialisation.id);
     setAvailible_timings(specialisation.available_timings);
@@ -114,28 +114,14 @@ function TableView({setSpecialisations,specialisations}) {
 
   return (
     <div>
+             
     <p style={{paddingTop:'80px'}}></p>
-      {/* <button
-        type="button"
-        data-toggle="modal" data-target="#exampleModalLive"
-        onClick={() => {
-          setAdd((value) => !value);
-        }}
-        class="btn btn-sm btn-circle btn-light"
-      >
-        Add doctor➕
-      </button>
-      <div className="addDoctor">
-        {add > 0 ? (
-          <Add setSpecialisations={setSpecialisations} setAdd={setAdd} />
-        ) : null}
-      </div> */}
       <div className='m-4 p-2 rounded regular-shadow' id="domains" style={{display:"inline-block",width:"1825px"}}>
       <table className="table table-striped table-light"  style={{borderRadius:"15px",overflowY:"scroll"}}>
       <thead>
       <tr style={{color:"#17a2b8"}}>
-      <th scope="col" style={{paddingLeft:"10px"}}>Doctor Id</th>
-        <th scope="col">First Name</th>
+      {/* <th scope="col" style={{paddingLeft:"10px"}}>Doctor Id</th> */}
+        <th scope="col"style={{paddingLeft:"10px"}}>First Name</th>
         <th scope="col">Last Name</th>
         <th scope="col">Specialisation</th>
         <th scope="col">Description</th>
@@ -144,11 +130,12 @@ function TableView({setSpecialisations,specialisations}) {
         <th scope="col">City</th>
         <th scope="col">Clinic Address</th>
         <th scope="col">Data of Birth</th>
-        <th scope="col">Photo</th>
+        {/* <th scope="col">Photo</th> */}
         <th scope="col">Qualification</th>
         <th scope="col">Sex</th>
         <th scope="col">State</th>
-        <th scope="col">Online Status</th>
+        {/* <th scope="col">Online Status</th> */}
+        <th></th>
         <th></th>
         <th></th>
       </tr>
@@ -157,166 +144,8 @@ function TableView({setSpecialisations,specialisations}) {
         { 
           specialisations &&
               specialisations.map((specialisation, index) => {
-                return specialisation.id === shouldEdit ? (
-                  <tr key={index}>
-                    <td>
-                      <input style={{width:'62px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={specialisation.id}
-                        placeholder="Doctor ID"
-                        readonly
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'82px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={fname}
-                        placeholder="First Name"
-                        onChange={(e) => setFname(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'82px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={lname}
-                        placeholder="Second Name"
-                        onChange={(e) => setLname(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'82px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={specialization}
-                        placeholder="Specialisation"
-                        onChange={(e) => setSpecialization(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'82px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={description}
-                        placeholder="Description"
-                        onChange={(e) => setDescription(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'62px',fontSize:'16px'}}
-                        type="number"
-                        className="form-control"
-                        value={rating}
-                        placeholder="Rating"
-                        onChange={(e) => setRating(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'82px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={available_timings}
-                        placeholder="Availible Timings"
-                        onChange={(e) => setAvailible_timings(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'82px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={city}
-                        placeholder="First Name"
-                        onChange={(e) => setCity(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'82px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={clinic_address}
-                        placeholder="Clinic Address"
-                        onChange={(e) => setClinic_address(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'62px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={dob}
-                        placeholder="Date of Birth"
-                        onChange={(e) => setDob(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'62px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={photo_url}
-                        placeholder="URL"
-                        onChange={(e) => setPhoto_url(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'62px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={qualification}
-                        placeholder="Qualification"
-                        onChange={(e) => setQualification(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'62px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={sex}
-                        placeholder="Sex"
-                        onChange={(e) => setSex(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'62px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={state}
-                        placeholder="State"
-                        onChange={(e) => setState(e.target.value)}
-                      />
-                    </td>
-                    <td>
-                      <input style={{width:'62px',fontSize:'16px'}}
-                        type="text"
-                        className="form-control"
-                        value={specialisation.online_status ? "🟢" : "🔴"}
-                        placeholder="Online Status"
-                        readOnly
-                      />
-                    </td>
-                    <td>
-                      <button
-                        class="btn btn-rounded btn-outline-success"
-                        onClick={() => handleUpdate()}
-                      >
-                        ✔️Submit
-                      </button>
-                      </td>
-                      <td>
-                      <button
-                        class="btn btn-rounded btn-outline-dark"
-                        onClick={() => {
-                          setEdit("");
-                        }}
-                      >
-                        ❌Cancel
-                      </button>
-                    </td>
-                  </tr>
-                ) : (
-                  <tr key={index}>
-                    <td>{specialisation.id}</td>
-                    <td>{specialisation.fname}</td>
+                 return (<tr key={index}>
+                   <td>{specialisation.fname}</td>
                     <td>{specialisation.lname}</td>
                     <td>{specialisation.specialization} </td>
                     <td>{specialisation.description}</td>
@@ -325,18 +154,19 @@ function TableView({setSpecialisations,specialisations}) {
                     <td>{specialisation.city}</td>
                     <td>{specialisation.clinic_address}</td>
                     <td>{specialisation.dob}</td>
-                    <td>{specialisation.photo_url}</td>
+                    {/* <td>{specialisation.photo_url}</td> */}
                     <td>{specialisation.qualification}</td>
                     <td>{specialisation.sex}</td>
                     <td>{specialisation.state}</td>
-                    <td>{specialisation.online_status ? "🟢" : "🔴"}</td>
+                    {/* <td>{specialisation.online_status ? "🟢" : "🔴"}</td> */}
                     <td>
                       <button
-                        class="btn btn-rounded btn-outline-info"
-                        onClick={() => handleEdit(specialisation)}
+                        class="btn btn-rounded btn-outline-info" data-toggle="modal" data-target="#exampleModalLive"
+                        onClick={() => {handleEdit(specialisation);setIsOpen(true)}}
                       >
                         📝 Edit
                       </button>
+                      
                     </td>
                     <td>
                       <button
@@ -347,8 +177,8 @@ function TableView({setSpecialisations,specialisations}) {
                         🗑️ Remove
                       </button>
                     </td>
-                  </tr>
-                );
+                    <td>{isOpen && <Modify specialisation={specialisation} setSpecialisations={setSpecialisations} setIsOpen={setIsOpen}></Modify>}  </td>
+                  </tr>)
               })}
         </tbody>
       </table>

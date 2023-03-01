@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Add from "./add";
 
-function Nav({ setUserId, setSpecialisations }) {
+function Nav({ setUserId, setDoctors }) {
   const [add, setAdd] = useState(false);
 
   return (
@@ -62,10 +62,7 @@ function Nav({ setUserId, setSpecialisations }) {
                 <div className="addDoctor">
                   {console.log(add)}
                   {add > 0 ? (
-                    <Add
-                      setSpecialisations={setSpecialisations}
-                      setAdd={setAdd}
-                    />
+                    <Add setDoctors={setDoctors} setAdd={setAdd} />
                   ) : null}
                 </div>
               </li>

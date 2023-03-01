@@ -10,27 +10,14 @@ import TableView from "./components/table";
 
 function App() {
   const [userID, setUserId] = useState(localStorage.getItem("Id"));
-  const [specialisations, setSpecialisations] = useState([]);
+  const [doctors, setDoctors] = useState([]);
 
   return userID <= 0 ? (
-    <Login user={setUserId} />
+    <Login setUserId={setUserId} />
   ) : (
     <Fragment>
-      {/* <div class="logout">
-        <button
-          type="button"
-          onClick={() => {
-            localStorage.setItem("Id", -1);
-            setUserId(-1);
-          }}
-          class="btn btn-sm btn-circle btn-danger "
-        >
-          Logout
-        </button>
-      </div> */}
-      <Nav setUserId={setUserId} setSpecialisations={setSpecialisations} />
-
-      <TableView setSpecialisations={setSpecialisations} specialisations={specialisations}/>
+      <Nav setUserId={setUserId} setDoctors={setDoctors} />
+      <TableView setDoctors={setDoctors} doctors={doctors} />
     </Fragment>
   );
 }

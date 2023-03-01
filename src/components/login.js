@@ -1,32 +1,9 @@
 import React, { useState } from "react";
-import axios from "axios";
+import { startLogin } from "../services/service.js";
 
-const config = {
-  headers:{
-    "ngrok-skip-browser-warning": "true"
-  }
-};
-
-function Login({ user }) {
+function Login({ setUserId }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const urlBase = "https://f738-103-156-19-229.in.ngrok.io/api/v1";
-
-  const startLogin = (credentials) => {
-    console.log(credentials);
-    axios
-      .post(`${urlBase}/admin/login`, credentials,config)
-      .then(() => {
-        console.log("Sucess");
-        localStorage.setItem("Id", 1);
-        user(1);
-        setEmail("");
-        setPassword("");
-      })
-      .catch(() => {
-        alert("Inavlid Credintials");
-      });
-  };
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -35,15 +12,28 @@ function Login({ user }) {
       username,
       password,
     };
-    startLogin(credentials);
+    startLogin(credentials, setUserId);
+    setEmail("");
+    setPassword("");
   };
 
   return (
     <div className="Auth-form-container">
       <form className="Auth-form">
-        <div className="Auth-form-content" style={{color: 'darkblue', paddingLeft:'50px'}}>
-          <h3 style={{paddingLeft:'65px', color:'rgb(38, 201, 225)', fontWeight:'bold'}}>ADMIN LOGIN</h3>
-          <div className="form-group mt-3" style={{paddingTop:'30px'}}>
+        <div
+          className="Auth-form-content"
+          style={{ color: "darkblue", paddingLeft: "50px" }}
+        >
+          <h3
+            style={{
+              paddingLeft: "65px",
+              color: "rgb(38, 201, 225)",
+              fontWeight: "bold",
+            }}
+          >
+            ADMIN LOGIN
+          </h3>
+          <div className="form-group mt-3" style={{ paddingTop: "30px" }}>
             <h5>User Name</h5>
             <input
               type="text"
@@ -65,7 +55,11 @@ function Login({ user }) {
             />
           </div>
           <div className="d-grid mt-5">
-            <button style={{backgroundColor:'rgb(38, 201, 225)', fontWeight:'bold'}}
+            <button
+              style={{
+                backgroundColor: "rgb(38, 201, 225)",
+                fontWeight: "bold",
+              }}
               type="Submit"
               className="btn btn-primary btn-block"
               onClick={(e) => handleLogin(e)}

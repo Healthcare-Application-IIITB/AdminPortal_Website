@@ -72,6 +72,9 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
       <div className="bd-example">
         <div
           className="modal"
+          data-bs-backdrop="static"
+          data-bs-keyboard="false"
+          data-backdrop="static"
           id="exampleModalLive"
           tabIndex="-1"
           role="dialog"
@@ -79,7 +82,8 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
           aria-hidden="true"
         >
           <div
-            className="modal-dialog modal-lg modal-dialog-centered"
+            className="modal-dialog modal-lg modal-dialog-centered "
+            data-bs-backdrop="static"
             role="document"
           >
             <div
@@ -98,14 +102,6 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
                 >
                   UPDATE DOCTOR
                 </h5>
-                <button
-                  type="button"
-                  className="close"
-                  data-dismiss="modal"
-                  aria-label="Close"
-                >
-                  <span aria-hidden="true">&times;</span>
-                </button>
               </div>
               <div
                 className="modal-body"

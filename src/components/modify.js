@@ -11,9 +11,6 @@ const Modify = ({specialisation,setSpecialisations,setIsOpen})=>{
       "ngrok-skip-browser-warning": "true",
     },
   };
-    const close = ()=>{
-        window.location.reload();
-    }
   const [shouldEdit, setEdit] = useState(specialisation.id);
   const [available_timings, setAvailible_timings] = useState(specialisation.available_timings);
   const [city, setCity] = useState(specialisation.city);
@@ -74,8 +71,7 @@ const Modify = ({specialisation,setSpecialisations,setIsOpen})=>{
         })
         .then(() => {
           getSpecialisations(setSpecialisations);
-          window.location.reload();
-        })
+                  })
         .catch((error) => {
           alert("Error While Updating");
           console.log(error);
@@ -83,9 +79,6 @@ const Modify = ({specialisation,setSpecialisations,setIsOpen})=>{
       }
   };
 
-  const handleClose = () => {
-    window.location.reload();
-  }
   useEffect(() => {
     getSpecialisations(setSpecialisations);
   }, []);
@@ -98,8 +91,7 @@ return(
        <div className="modal-content" style={{backgroundColor:"rgb(250, 250, 250)"}}>
        <div className="modal-header">
            <h5 className="modal-title" style={{color:"#17a2b8", paddingLeft:'300px', fontWeight:'bold'}} id="exampleModalCenterTitle">UPDATE DOCTOR</h5>
-           <button type="button" className="close" data-dismiss="modal" aria-label="Close" onClick={(e) => {
-            handleClose(e)}}>
+           <button type="button" className="close" data-dismiss="modal" aria-label="Close">
            <span aria-hidden="true">&times;</span>
            </button>
        </div>
@@ -281,10 +273,9 @@ return(
        </tbody>
        </div>
        <div className="modal-footer">
-           <button type="button" className="btn btn-outline-secondary"  style={{fontWeight:'bold', borderRadius:'7px'}} data-dismiss="modal" onClick={(e) => {
-            handleClose(e)}}
+           <button type="button" className="btn btn-outline-secondary"  style={{fontWeight:'bold', borderRadius:'7px'}} data-dismiss="modal"
              >CLOSE</button>
-           <button type="button" className="btn btn-outline-primary" style={{fontWeight:'bold', borderRadius:'7px'}} onClick={(e) => handleUpdate(e)}>SUBMIT</button>
+           <button type="button" className="btn btn-outline-primary" data-dismiss="modal"  style={{fontWeight:'bold', borderRadius:'7px'}} onClick={(e) => handleUpdate(e)}>SUBMIT</button>
        </div>
        </div>
    </div>

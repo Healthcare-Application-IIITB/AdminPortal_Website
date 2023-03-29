@@ -54,8 +54,8 @@ function TableView({ setDoctors, doctors }) {
               <th scope="col">Sex</th>
               <th scope="col">State</th>
               {/* <th scope="col">Online Status</th> */}
-              <th></th>
-              <th></th>
+              <th scope="col">User Name</th>
+              <th scope="col">Email</th>
               <th></th>
             </tr>
           </thead>
@@ -77,6 +77,8 @@ function TableView({ setDoctors, doctors }) {
                     <td>{doctor.qualification}</td>
                     <td>{doctor.sex}</td>
                     <td>{doctor.state}</td>
+                    <td>{doctor.userName}</td>
+                    <td>{doctor.email}</td>
                     {/* <td>{doctor.online_status ? "🟢" : "🔴"}</td> */}
                     <td>
                       <button

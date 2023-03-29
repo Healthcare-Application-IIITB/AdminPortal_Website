@@ -18,7 +18,10 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
   const [specialization, setSpecialization] = useState(doctor.specialization);
   const [state, setState] = useState(doctor.state);
   const [clinic_address, setClinic_address] = useState(doctor.clinic_address);
-  const [id, setId] = useState(doctor.id);
+  const [id] = useState(doctor.id);
+  const [userName] = useState(doctor.userName);
+  const [email] = useState(doctor.email);
+  const [password] = useState(doctor.password);
 
   console.log("Inside Modify");
   console.log(fname);
@@ -40,6 +43,9 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
       sex,
       specialization,
       state,
+      userName,
+      password,
+      email
     };
     if (
       !(

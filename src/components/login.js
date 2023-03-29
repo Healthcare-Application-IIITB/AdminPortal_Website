@@ -2,18 +2,17 @@ import React, { useState } from "react";
 import { startLogin } from "../services/service.js";
 
 function Login({ setUserId }) {
-  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = (event) => {
     event.preventDefault();
-    let username = email;
     const credentials = {
       username,
       password,
     };
     startLogin(credentials, setUserId);
-    setEmail("");
+    setUsername("");
     setPassword("");
   };
 
@@ -40,8 +39,8 @@ function Login({ setUserId }) {
               required
               className="form-control mt-1"
               placeholder="Enter name"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
+              value={username}
+              onChange={(event) => setUsername(event.target.value)}
             />
           </div>
           <div className="form-group mt-3">

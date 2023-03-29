@@ -15,6 +15,9 @@ function Add({ setDoctors, setAdd }) {
   const [specialization, setSpecialization] = useState("");
   const [state, setState] = useState("");
   const [clinic_address, setClinic_address] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("")
 
   const handleSubmit = (e) => {
     const data = {
@@ -32,6 +35,9 @@ function Add({ setDoctors, setAdd }) {
       available_timings,
       online_status: false,
       dob,
+      username,
+      password,
+      email
     };
 
     if (
@@ -47,7 +53,10 @@ function Add({ setDoctors, setAdd }) {
         description &&
         rating &&
         available_timings &&
-        dob
+        dob &&
+        username &&
+        password &&
+        email
       )
     ) {
       alert("All Fields are Required");
@@ -76,6 +85,9 @@ function Add({ setDoctors, setAdd }) {
     setSpecialization("");
     setState("");
     setClinic_address("");
+    setUsername("");
+    setPassword("");
+    setEmail("");
   };
 
   return (
@@ -404,6 +416,74 @@ function Add({ setDoctors, setAdd }) {
                         disabled
                       />
                     </td>
+                  </tr>
+                  <tr>
+                    <td style={{ paddingLeft: "30px" }}>
+                      <h5
+                        className="modal-title add-form"
+                        id="exampleModalCenterTitle"
+                      >
+                        User Name
+                      </h5>
+                      <input
+                        className="add-form-input"
+                        type="text"
+                        required
+                        value={username}
+                        placeholder="Username"
+                        onChange={(e) => setUsername(e.target.value)}
+                      />
+                    </td>
+                    <td style={{ paddingLeft: "100px" }}>
+                      <h5
+                        className="modal-title add-form"
+                        id="exampleModalCenterTitle"
+                      >
+                        password
+                      </h5>
+                      <input
+                        className="add-form-input"
+                        type="password"
+                        required
+                        value={password}
+                        placeholder="State"
+                        onChange={(e) => setPassword(e.target.value)}
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ paddingLeft: "30px" }}>
+                      <h5
+                        className="modal-title add-form"
+                        id="exampleModalCenterTitle"
+                      >
+                        Email
+                      </h5>
+                      <input
+                        className="add-form-input"
+                        type="email"
+                        required
+                        value={email}
+                        placeholder="Email"
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </td>
+                    {/* <td style={{ paddingLeft: "100px" }}>
+                      <h5
+                        className="modal-title add-form"
+                        id="exampleModalCenterTitle"
+                      >
+                        State
+                      </h5>
+                      <input
+                        className="add-form-input"
+                        type="text"
+                        required
+                        value={state}
+                        placeholder="State"
+                        onChange={(e) => setState(e.target.value)}
+                      />
+                    </td> */}
                   </tr>
                   <tr></tr>
                 </tbody>

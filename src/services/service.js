@@ -1,16 +1,21 @@
 import axios from "axios";
-const urlBase = "http://localhost:8080/api/v1";
+import authHeader from './auth-header';
+const urlBase = "http://localhost:8080/api";
 
+const admin = JSON.parse(localStorage.getItem('admin'));
 const config = {
-  headers: {
-    "ngrok-skip-browser-warning": "true",
-  },
+  // headers: {
+  //   "ngrok-skip-browser-warning": "true",
+    
+  // },
+  headers: authHeader()
 };
+
 
 const getDoctors = (setDoctors) => {
   console.log("doc req");
   axios
-    .get(`${urlBase}/doctor/getAllDoctors`, config)
+    .get(`${urlBase}/v1/doctor/getAllDoctors`, config)
     .then((json) => {
       setDoctors(json.data);
       console.log("doctor data is:", json.data);
@@ -23,7 +28,7 @@ const getDoctors = (setDoctors) => {
 
 const addDoctor = (setDoctors, data) => {
   axios
-    .post(`${urlBase}/doctor/addDoctor`, data, config)
+    .post(`${urlBase}/auth/doctor/signup`, data, config)
     .then((json) => {
       getDoctors(setDoctors);
     })
@@ -35,7 +40,7 @@ const addDoctor = (setDoctors, data) => {
 
 const updateDoctor = (setDoctors, data) => {
   axios
-    .post(`${urlBase}/doctor/updateDoctor`, data, config)
+    .post(`${urlBase}/v1/doctor/updateDoctor`, data, config)
     .then(() => {
       getDoctors(setDoctors);
     })
@@ -45,24 +50,36 @@ const updateDoctor = (setDoctors, data) => {
     });
 };
 
-const startLogin = (credentials, setUserId) => {
+const startLogin = (credentials,setUserId) => {
   axios
-    .post(`${urlBase}/admin/login`, credentials, config)
-    .then(() => {
-      console.log("Sucess");
-      localStorage.setItem("Id", 1);
-      setUserId(1);
+    .post(`${urlBase}/auth/admin/signin`, credentials, config)
+    .then(response => {
+      if (response.data.accessToken) {
+        console.log(response.data.accessToken)
+        localStorage.setItem("admin", JSON.stringify(response.data));
+        setUserId(1);
+      }
+      return response.data;
     })
     .catch((err) => {
       console.log(err);
-      alert("Inavlid Credintials");
+      alert("Invalid Credintials");
     });
 };
 
 const deleteDoctor = (id, setDoctors) => {
-  axios.post(`${urlBase}/doctor/deleteDoctor/${id}`, config).then((json) => {
+  axios.get(`${urlBase}/v1/doctor/deleteDoctor/${id}`, config)
+  .then((json) => {
+    console.log(json.data);
     getDoctors(setDoctors);
+  })
+  .catch((err) => {
+    console.log(admin.accessToken)
+    console.log(err);
+    alert("Invalid Operation");
   });
 };
 
-export { getDoctors, addDoctor, startLogin, deleteDoctor, updateDoctor };
+
+
+export { getDoctors, addDoctor, startLogin, deleteDoctor, updateDoctor};

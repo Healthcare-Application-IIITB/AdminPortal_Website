@@ -4,6 +4,13 @@ import Add from "./add";
 function Nav({ setUserId, setDoctors }) {
   const [add, setAdd] = useState(false);
 
+  const logout=(e) => {
+    console.log(e);
+    localStorage.removeItem("admin");
+    localStorage.setItem("Id", -1);
+    setUserId(-1);
+}
+
   return (
     <div class="logout" style={{ paddingRight: "50px", paddingTop: "50px" }}>
       <nav
@@ -90,10 +97,7 @@ function Nav({ setUserId, setDoctors }) {
                   fontSize: "16px",
                   paddingRight: "20px",
                 }}
-                onClick={() => {
-                  localStorage.setItem("Id", -1);
-                  setUserId(-1);
-                }}
+                onClick={(e) => logout(e)}
               >
                 {" "}
                 LOGOUT

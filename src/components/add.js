@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { addDoctor } from "../services/service.js";
+import { addDoctor} from "../services/service.js";
 
-function Add({ setDoctors, setAdd }) {
+function Add({ setDoctors, setAdd,doctors }) {
   const [available_timings, setAvailible_timings] = useState("");
   const [city, setCity] = useState("");
   const [description, setDescription] = useState("");
@@ -18,7 +18,8 @@ function Add({ setDoctors, setAdd }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("")
-
+  
+  
   const handleSubmit = (e) => {
     const data = {
       fname,
@@ -67,6 +68,7 @@ function Add({ setDoctors, setAdd }) {
         .getElementById("add-form-submit")
         .setAttribute("data-dismiss", "modal");
       addDoctor(setDoctors, data);
+      console.log(doctors)
       clear();
     }
   };
@@ -215,20 +217,20 @@ function Add({ setDoctors, setAdd }) {
                     </td>
                   </tr>
                   <tr>
-                    <td style={{ paddingLeft: "30px" }}>
+                  <td style={{ paddingLeft: "30px" }}>
                       <h5
                         className="modal-title add-form"
                         id="exampleModalCenterTitle"
                       >
-                        Upload Photo
+                        Email
                       </h5>
                       <input
                         className="add-form-input"
-                        type="file"
+                        type="email"
                         required
-                        value={""}
-                        placeholder="Photo URL"
-                        onChange={(e) => setPhoto_url(e.target.value)}
+                        value={email}
+                        placeholder="Email"
+                        onChange={(e) => setEmail(e.target.value)}
                       />
                     </td>
                     <td style={{ paddingLeft: "100px" }}>
@@ -452,38 +454,7 @@ function Add({ setDoctors, setAdd }) {
                     </td>
                   </tr>
                   <tr>
-                    <td style={{ paddingLeft: "30px" }}>
-                      <h5
-                        className="modal-title add-form"
-                        id="exampleModalCenterTitle"
-                      >
-                        Email
-                      </h5>
-                      <input
-                        className="add-form-input"
-                        type="email"
-                        required
-                        value={email}
-                        placeholder="Email"
-                        onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </td>
-                    {/* <td style={{ paddingLeft: "100px" }}>
-                      <h5
-                        className="modal-title add-form"
-                        id="exampleModalCenterTitle"
-                      >
-                        State
-                      </h5>
-                      <input
-                        className="add-form-input"
-                        type="text"
-                        required
-                        value={state}
-                        placeholder="State"
-                        onChange={(e) => setState(e.target.value)}
-                      />
-                    </td> */}
+                    
                   </tr>
                   <tr></tr>
                 </tbody>

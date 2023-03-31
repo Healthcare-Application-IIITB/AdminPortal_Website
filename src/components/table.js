@@ -7,7 +7,7 @@ import Modify from "./modify";
 function TableView({ setDoctors, doctors }) {
   const [isOpen, setIsOpen] = useState(false);
   const [editDoc, setEditDoc] = useState("");
-
+  
   const handleDelete = (id) => {
     deleteDoctor(id, setDoctors);
   };
@@ -37,7 +37,6 @@ function TableView({ setDoctors, doctors }) {
         >
           <thead>
             <tr style={{ color: "#17a2b8" }}>
-              {/* <th scope="col" style={{paddingLeft:"10px"}}>Doctor Id</th> */}
               <th scope="col" style={{ paddingLeft: "10px" }}>
                 First Name
               </th>
@@ -49,11 +48,9 @@ function TableView({ setDoctors, doctors }) {
               <th scope="col">City</th>
               <th scope="col">Clinic Address</th>
               <th scope="col">Data of Birth</th>
-              {/* <th scope="col">Photo</th> */}
               <th scope="col">Qualification</th>
               <th scope="col">Sex</th>
               <th scope="col">State</th>
-              {/* <th scope="col">Online Status</th> */}
               <th scope="col">User Name</th>
               <th scope="col">Email</th>
               <th></th>

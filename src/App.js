@@ -16,7 +16,7 @@ function App() {
     <Login setUserId={setUserId} />
   ) : (
     <Fragment>
-      <Nav setUserId={setUserId} setDoctors={setDoctors} />
+      <Nav setUserId={setUserId} setDoctors={setDoctors} doctors={doctors}/>
       <TableView setDoctors={setDoctors} doctors={doctors} />
     </Fragment>
   );

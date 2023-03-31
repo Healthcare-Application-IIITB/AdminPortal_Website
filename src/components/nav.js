@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Add from "./add";
 
-function Nav({ setUserId, setDoctors }) {
+function Nav({ setUserId, setDoctors, doctors }) {
   const [add, setAdd] = useState(false);
 
   const logout=(e) => {
@@ -69,7 +69,7 @@ function Nav({ setUserId, setDoctors }) {
                 <div className="addDoctor">
                   {console.log(add)}
                   {add > 0 ? (
-                    <Add setDoctors={setDoctors} setAdd={setAdd} />
+                    <Add setDoctors={setDoctors} setAdd={setAdd} doctors={doctors}/>
                   ) : null}
                 </div>
               </li>

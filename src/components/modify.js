@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 //import axios from "axios";
-import { updateDoctor } from "../services/service.js";
+import { updateDoctor,uploadPhoto } from "../services/service.js";
 
 const Modify = ({ doctor, setDoctors, setIsOpen }) => {
   const [available_timings, setAvailible_timings] = useState(
@@ -11,7 +11,6 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
   const [dob, setDob] = useState(doctor.dob);
   const [fname, setFname] = useState(doctor.fname);
   const [lname, setLname] = useState(doctor.lname);
-  const [photo_url, setPhoto_url] = useState(doctor.photo_url);
   const [qualification, setQualification] = useState(doctor.qualification);
   const [rating, setRating] = useState(doctor.rating);
   const [sex, setSex] = useState(doctor.sex);
@@ -22,9 +21,13 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
   const [userName] = useState(doctor.userName);
   const [email] = useState(doctor.email);
   const [password] = useState(doctor.password);
+  const [roles] = useState(doctor.roles);
 
+  let file = null;
+  const handleUpload = (e) => {
+    file = e.target.files[0];
+  }
   console.log("Inside Modify");
-  console.log(fname);
 
   const handleUpdate = () => {
     const data = {
@@ -37,7 +40,6 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
       id,
       lname,
       online_status: false,
-      photo_url,
       qualification,
       rating,
       sex,
@@ -45,7 +47,8 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
       state,
       userName,
       password,
-      email
+      email,
+      roles
     };
     if (
       !(
@@ -66,6 +69,7 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
       alert("All Fields are Required");
     } else {
       updateDoctor(setDoctors, data);
+      uploadPhoto(id,file);
     }
   };
 
@@ -204,9 +208,8 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
                       <input
                         className="add-form-input"
                         type="file"
-                        value={""}
                         placeholder="Photo URL"
-                        onChange={(e) => setPhoto_url(e.target.value)}
+                        onChange={handleUpload}
                       />
                     </td>
                     <td style={{ paddingLeft: "100px" }}>

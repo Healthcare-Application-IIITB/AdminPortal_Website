@@ -8,8 +8,11 @@ const config = {
   //   "ngrok-skip-browser-warning": "true",
     
   // },
-  headers: authHeader()
+  headers:authHeader()
 };
+
+
+
 
 
 const getDoctors = (setDoctors) => {
@@ -80,6 +83,13 @@ const deleteDoctor = (id, setDoctors) => {
   });
 };
 
+const uploadPhoto = (id, file) => {
+  console.log(id)
+  let formData = new FormData();
+  formData.append("image",file);
+  axios.post(`${urlBase}/v1/admin/uploadImage/${id}`,formData, config)
+}
 
 
-export { getDoctors, addDoctor, startLogin, deleteDoctor, updateDoctor};
+
+export { getDoctors, addDoctor, startLogin, deleteDoctor, updateDoctor, uploadPhoto};

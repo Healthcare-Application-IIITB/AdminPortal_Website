@@ -10,7 +10,7 @@ function Add({ setDoctors, setAdd,doctors }) {
   const [lname, setLname] = useState("");
   const [photo_url, setPhoto_url] = useState("");
   const [qualification, setQualification] = useState("");
-  const [rating, setRating] = useState("");
+  const [phoneNo, setPhoneNo] = useState("");
   const [sex, setSex] = useState("");
   const [specialization, setSpecialization] = useState("");
   const [state, setState] = useState("");
@@ -32,7 +32,7 @@ function Add({ setDoctors, setAdd,doctors }) {
       city,
       state,
       description,
-      rating,
+      phoneNo,
       available_timings,
       online_status: false,
       dob,
@@ -52,7 +52,7 @@ function Add({ setDoctors, setAdd,doctors }) {
         city &&
         state &&
         description &&
-        rating &&
+        phoneNo &&
         available_timings &&
         dob &&
         username &&
@@ -82,7 +82,7 @@ function Add({ setDoctors, setAdd,doctors }) {
     setLname("");
     setPhoto_url("");
     setQualification("");
-    setRating("");
+    setPhoneNo("");
     setSex("");
     setSpecialization("");
     setState("");
@@ -352,35 +352,25 @@ function Add({ setDoctors, setAdd,doctors }) {
                         onChange={(e) => setDescription(e.target.value)}
                       />
                     </td>
-                    <td style={{ paddingLeft: "100px" }}>
+                    <td style={{ paddingLeft: "30px" }}>
                       <h5
                         className="modal-title add-form"
                         id="exampleModalCenterTitle"
                       >
-                        Rating
+                        Phone Number
                       </h5>
-                      <select
-                        name="Rating"
-                        id="Rating"
+                      <input
                         className="add-form-input"
+                        type="number"
                         required
-                        value={rating}
-                        placeholder="Rating"
+                        value={phoneNo}
+                        placeholder="Phone Number"
                         onChange={(e) => {
-                          console.log(rating);
-                          setRating(e.target.value);
+                          setPhoneNo(e.target.value);
                         }}
-                      >
-                        <option selected disabled hidden value="">
-                          Select option
-                        </option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                      </select>
+                      />
                     </td>
+                    
                   </tr>
                   <tr>
                     <td style={{ paddingLeft: "30px" }}>
@@ -397,7 +387,6 @@ function Add({ setDoctors, setAdd,doctors }) {
                         value={dob}
                         placeholder="DOB"
                         onChange={(e) => {
-                          console.log(dob);
                           setDob(e.target.value);
                         }}
                       />

@@ -12,7 +12,7 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
   const [fname, setFname] = useState(doctor.fname);
   const [lname, setLname] = useState(doctor.lname);
   const [qualification, setQualification] = useState(doctor.qualification);
-  const [rating, setRating] = useState(doctor.rating);
+  const [phoneNo, setPhoneNo] = useState(doctor.phoneNo);
   const [sex, setSex] = useState(doctor.sex);
   const [specialization, setSpecialization] = useState(doctor.specialization);
   const [state, setState] = useState(doctor.state);
@@ -41,7 +41,7 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
       lname,
       online_status: false,
       qualification,
-      rating,
+      phoneNo,
       sex,
       specialization,
       state,
@@ -61,7 +61,7 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
         city &&
         state &&
         description &&
-        rating &&
+        phoneNo &&
         available_timings &&
         dob
       )
@@ -332,34 +332,23 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
                         onChange={(e) => setDescription(e.target.value)}
                       />
                     </td>
-                    <td style={{ paddingLeft: "100px" }}>
+                    <td style={{ paddingLeft: "30px" }}>
                       <h5
                         className="modal-title add-form"
                         id="exampleModalCenterTitle"
                       >
-                        Rating
+                        Phone Number
                       </h5>
-                      <select
-                        name="Rating"
-                        id="Rating"
+                      <input
                         className="add-form-input"
+                        type="number"
                         required
-                        value={rating}
-                        placeholder="Rating"
+                        value={phoneNo}
+                        placeholder="Phone Number"
                         onChange={(e) => {
-                          console.log(rating);
-                          setRating(e.target.value);
+                          setPhoneNo(e.target.value);
                         }}
-                      >
-                        <option selected disabled hidden value="">
-                          Select option
-                        </option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                      </select>
+                      />
                     </td>
                   </tr>
                   <tr style={{ backgroundColor: "rgb(250, 250, 250)" }}>

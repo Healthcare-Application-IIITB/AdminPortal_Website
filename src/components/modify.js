@@ -332,7 +332,7 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
                         onChange={(e) => setDescription(e.target.value)}
                       />
                     </td>
-                    <td style={{ paddingLeft: "30px" }}>
+                    <td style={{ paddingLeft: "100px" }}>
                       <h5
                         className="modal-title add-form"
                         id="exampleModalCenterTitle"

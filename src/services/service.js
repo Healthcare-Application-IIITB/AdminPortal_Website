@@ -1,19 +1,16 @@
 import axios from "axios";
-import authHeader from './auth-header';
-const urlBase = "http://localhost:8080/api";
+const urlBase = "https://c5c5-103-156-19-229.ngrok-free.app/api";
 
 const admin = JSON.parse(localStorage.getItem('admin'));
-const config = {
-  // headers: {
-  //   "ngrok-skip-browser-warning": "true",
-    
-  // },
-  headers:authHeader()
+var config = null;
+if (admin && admin.accessToken) {
+config = {
+  headers: {
+    "ngrok-skip-browser-warning": "true",
+    Authorization: "Bearer " + admin.accessToken,
+  }         
 };
-
-
-
-
+}
 
 const getDoctors = (setDoctors) => {
   console.log("doc req");

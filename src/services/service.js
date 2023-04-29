@@ -14,6 +14,7 @@ config = {
 
 const getDoctors = (setDoctors) => {
   console.log("doc req");
+  console.log(admin.accessToken)
   axios
     .get(`${urlBase}/v1/doctor/getAllDoctors`, config)
     .then((json) => {
@@ -39,6 +40,7 @@ const addDoctor = (setDoctors, data) => {
 };
 
 const updateDoctor = (setDoctors, data) => {
+  console.log("dddddddddddddddddddddddddddd",data)
   axios
     .post(`${urlBase}/v1/doctor/updateDoctor`, data, config)
     .then(() => {

@@ -22,6 +22,8 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
   const [email] = useState(doctor.email);
   const [password] = useState(doctor.password);
   const [roles] = useState(doctor.roles);
+  const [active] = useState(true);
+  const [no_of_ratings] = useState(doctor.no_of_ratings);
 
   let file = null;
   const handleUpload = (e) => {
@@ -48,7 +50,9 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
       userName,
       password,
       email,
-      roles
+      roles,
+      active,
+      no_of_ratings
     };
     if (
       !(
@@ -65,7 +69,7 @@ const Modify = ({ doctor, setDoctors, setIsOpen }) => {
         available_timings &&
         dob
       )
-    ) {
+      ) {
       alert("All Fields are Required");
     } else {
       updateDoctor(setDoctors, data);
